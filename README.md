@@ -75,6 +75,7 @@ might help with the notation for mathematical expressions.
     - $\text{Total Probability} = \frac{1}{8} + \frac{1}{16} + \frac{1}{16} + \frac{1}{32} = 0.6875$ or 68.75%
 
 **Conclusion** 
+
 After analyzing both strategies, Picking leftmost element and median-of-three method, and calculating the probabilities, it is clear that the median-of-three method is the most efficient method to use on QuickSort. The chance of selecting a good pivot using the leftmost element is 50%, whereas the chances of selecting a good pivot using the median-of-three method is 68.75%. Leading to the conclusion that the median-of-three method is the more effective strategy to implement for selecting a good pivot. This is due to the array being split evenly will be increased with this method, allowing an increased chance of getting a good pivot.
 
 ## Plagiarism Statement: 
