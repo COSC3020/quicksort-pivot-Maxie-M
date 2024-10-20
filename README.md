@@ -58,21 +58,62 @@ might help with the notation for mathematical expressions.
          greater
       - LPG: One element is low, one element is in the pivot range, and one element
         is greater
+  - Checking if Combination is Within Pivot Range
+    | Combo Clacs | In Range? | Combo Calcs | In Range? | Combo Calcs | In Range? |
+    |-------------|-----------|-------------|-----------|-------------|-----------|
+    | 1. $\text{LLL} = \left( \frac{1}{4} \right)^3 = \frac{1}{64}$ | no | 10. $\text{LLP} = \left( \frac{1}{4} \right)^2 \times \frac {1}{2} = \frac{1}{32}$ | yes | 19. $\text{LLG} = \left( \frac{1}{4} \right)^3 = \frac{1}{64}$ | no |
+    | 2. $\text{PPP} = \left( \frac{1}{2} \right)^3 = \frac{1}{8}$ | yes | 11. $\text{PPL} = \left( \frac{1}{2} \right)^2 \times \frac {1}{4} = \frac{1}{16}$ | yes | 20. $\text{PPG} = \left( \frac{1}{2} \right)^2 \times \frac {1}{4} = \frac{1}{16}$ | yes |
+    | 3. $\text{GGG} = \left( \frac{1}{4} \right)^3 = \frac{1}{64}$ | no | 12. $\text{GGP} =  \left( \frac{1}{4} \right)^2 \times \frac {1}{2} = \frac{1}{32}$ | yes | 21. $\text{GGL} =  \left( \frac{1}{4} \right)^3 = \frac{1}{64}$ | no |
+    | 4. $\text{PLL} = \frac{1}{2} \times \left( \frac{1}{4} \right)^2 = \frac{1}{32}$ | yes | 13. $\text{GLL} =  \left( \frac{1}{4} \right)^3 = \frac{1}{64}$ | no | 22. $\text{LPG} = \frac{1}{4} \times \frac{1}{2} \times \frac{1}{4} = \frac{1}{32}$ | yes|
+    | 5. $\text{LPP} = \frac{1}{4} \times \left( \frac{1}{2} \right)^2 = \frac{1}{16}$ | yes | 14. $\text{GPP} = \frac{1}{4} \times \left( \frac{1}{2} \right)^2 = \frac{1}{16}$ | yes | 23. $\text{PLG} = \frac{1}{2} \times \left( \frac{1}{4} \right)^2 = \frac{1}{32}$ | yes |
+    | 6. $\text{PGG} =  \frac{1}{2} \times \left( \frac{1}{4} \right)^2 = \frac{1}{32}$ | yes | 15. $\text{LGG} =  \left( \frac{1}{4} \right)^3 = \frac{1}{64}$ | no | 24. $\text{GPL} = \frac{1}{4} \times \frac{1}{2} \times \frac{1}{4} = \frac{1}{32}$ | yes|
+    | 7. $\text{LPL} = \frac{1}{4} \times \frac{1}{2} \times \frac{1}{4} = \frac{1}{32}$ | yes | 16. $\text{LGL} =  \left( \frac{1}{4} \right)^3 = \frac{1}{64}$ | no | 25. $\text{LGP} = \left( \frac{1}{4} \right)^2 \times \frac{1}{2} = \frac{1}{32}$ | yes |
+    | 8. $\text{PLP} = \frac{1}{2} \times \frac{1}{4} \times \frac{1}{2} = \frac{1}{16}$ | yes | 17. $\text{PGP} = \frac{1}{2} \times \frac{1}{4} \times \frac{1}{2} = \frac{1}{16}$ | yes | 26. $\text{PGL} = \frac{1}{2} \times \left( \frac{1}{4} \right)^2 = \frac{1}{32}$ | yes |
+    | 9. $\text{GPG} = \frac{1}{4} \times \frac{1}{2} \times \frac{1}{4} = \frac{1}{32}$ | yes| 18. $\text{GLG} = \left( \frac{1}{4} \right)^3 = \frac{1}{64}$ | no | 27. $\text{GLP} = \left( \frac{1}{4} \right)^2 \times \frac{1}{2} = \frac{1}{32}$ | yes |
+
+    - Anaylzing the Table Above:
+      
+      **Combinations resulting in $\frac{1}{8}$**
+      - PPP ($\times {1}$)
+        
+      **Combinations Resulting in $\frac{1}{16}$**
+        | LPP | GPP |
+        |-----|-----|
+        | PLP | PGP |
+        | PPL | PPG |
+        - There are 3 combinations for two P's and one L ($\times {3}$)
+        - There are 3 combinations for two P's and one G ($\times {3}$)
+
+      **Combinations Resulting in $\frac{1}{32}$**
+        | LPL | LLP | LPG | LGP |
+        |-----|-----|-----|-----|
+        | GPG | GGP | GPL | GLP |
+        | PLL | PGG | PLG | PGL |
+        - There are six combinations resulting in $\frac{1}{32}$ ($\times {6}$)
+
+      **Combinations Resulting in $\frac{1}{64}$ (Out Of Range)**
+        | LLL | GGG |
+        |-----|-----|
+        | LGG | GLL |
+        | LGL | GLG |
+        | LLG | GGL |
+        - There are six combinations which are out of range of the pivot 
+    
   - Calculating the Probability of Selecting a Good Pivot
     - The probability will be calculated based on how many elements fall into the
       L, P, and G categories in each combination
     - Probability of PPP
-      - $\text{Probability}(PPP) = \left( \frac{1}{2} \right)^3 = \frac{1}{8}$
+      - $\text{Probability}(PPP) = \left( \frac{1}{2} \right)^3 = \frac{1}{8} \times {1} = \frac{1}{8}$
     - Probability of PPL
-      - $\text{Probability}(PPL) = \left( \frac{1}{2} \right)^2 \times \frac{1}{4} = \frac{1}{16}$
+      - $\text{Probability}(PPL) = \left( \frac{1}{2} \right)^2 \times \frac{1}{4} = \frac{1}{16} \times {3} = \frac{3}{16}$
     - Probability of PPG
-      - $\text{Probability}(PPG) = \left( \frac{1}{2} \right)^2 \times \frac{1}{4} = \frac{1}{16}$
+      - $\text{Probability}(PPG) = \left( \frac{1}{2} \right)^2 \times \frac{1}{4} = \frac{1}{16} \times {3} = \frac{3}{16}$
     - Probability of LPG
-      - $\text{Probability}(LPG) = \frac{1}{4} \times \frac{1}{2} \times \frac{1}{4} = \frac{1}{32}$
+      - $\text{Probability}(LPG) = \frac{1}{4} \times \frac{1}{2} \times \frac{1}{4} = \frac{1}{32} \times {6} = \frac{6}{32} = \frac{3}{16}$
   - The Total Probability of a Good Pivot
     - The total probability of a good pivot is determined by the sum of the
       probabilities which were calculated above: 
-    - $\text{Total Probability} = \frac{1}{8} + \frac{1}{16} + \frac{1}{16} + \frac{1}{32} = 0.6875$ or 68.75%
+    - $\text{Total Probability} = \frac{1}{8} + \frac{3}{16} + \frac{3}{16} + \frac{3}{16} = \frac{11}{16} = 0.6875$ or 68.75%
 
 **Conclusion** 
 
